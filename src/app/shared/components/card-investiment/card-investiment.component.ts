@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Investiment } from '@models/investiment';
 
 @Component({
-    selector: 'app-card-investiment',
+    selector: 'card-investiment',
     templateUrl: './card-investiment.component.html',
     styleUrls: ['./card-investiment.component.scss'],
 })

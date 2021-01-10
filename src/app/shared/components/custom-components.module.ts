@@ -4,18 +4,23 @@ import { IonicModule } from '@ionic/angular';
 
 import { CardInvestimentComponent } from './card-investiment/card-investiment.component';
 import { CustomPipesModule } from '@pipes/custom-pipes.module';
+import { CustomInputComponent } from './custom-input/custom-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
-        CardInvestimentComponent
+        CardInvestimentComponent,
+        CustomInputComponent
     ],
     imports: [
         CommonModule,
         IonicModule,
-        CustomPipesModule
+        CustomPipesModule,
+        ReactiveFormsModule
     ],
     exports: [
-        CardInvestimentComponent
+        CardInvestimentComponent,
+        CustomInputComponent
     ]
 })
 export class CustomComponentsModule { }
