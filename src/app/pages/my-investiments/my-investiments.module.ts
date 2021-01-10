@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MyInvestimentsComponent } from './my-investiments.component';
 import { RouterModule, Routes } from '@angular/router';
+
+import { MyInvestimentsComponent } from './my-investiments.component';
+import { CustomComponentsModule } from '@shared/components/custom-components.module';
+
 
 const routes: Routes = [
     {
@@ -16,6 +19,7 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
+        CustomComponentsModule,
         RouterModule.forChild(routes)
     ],
     exports: [

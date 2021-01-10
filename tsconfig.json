@@ -17,7 +17,16 @@
         ],
         "paths": {
             "@pages/*": [
-                "./src/app/presentation/pages/*"
+                "./src/app/pages/*"
+            ],
+            "@shared/*": [
+                "./src/app/shared/*"
+            ],
+            "@pipes/*": [
+                "./src/app/pipes/*"
+            ],
+            "@models/*": [
+                "./src/app/models/*"
             ]
         }
     },
