@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Meus investimentos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div id="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6" *ngFor="let investiment of investiments">
+                    <app-card-investiment [investiment]="investiment"></app-card-investiment>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

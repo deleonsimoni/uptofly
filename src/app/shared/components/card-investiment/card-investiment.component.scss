@@ -1,0 +1,46 @@
+@mixin upside-state($color, $icon) {
+    color: $color;
+
+    &::before {
+        content: $icon;
+        font-family: "Font Awesome 5 Free";
+        margin-right: 6px;
+        font-size: 16px;
+    }
+}
+
+.card {
+    margin: 4px;
+    border-radius: 8px;
+}
+
+.content {
+    margin: 6px 0px;
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+    &__label {
+        font-weight: 600;
+        color: #000000ad;
+        letter-spacing: 1px;
+        font-style: italic;
+    }
+
+    &__data {
+        font-weight: 600;
+        color: #000;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+
+        &--positive {
+            @include upside-state(green, "\f062");
+        }
+
+        &--negative {
+            @include upside-state(red, "\f063");
+        }
+    }
+}
