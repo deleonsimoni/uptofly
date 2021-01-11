@@ -6,21 +6,26 @@ import { CardInvestimentComponent } from './card-investiment/card-investiment.co
 import { CustomPipesModule } from '@pipes/custom-pipes.module';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomDatePickerComponent } from './custom-date-picker/custom-date-picker.component';
+import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
     declarations: [
         CardInvestimentComponent,
-        CustomInputComponent
+        CustomInputComponent,
+        CustomDatePickerComponent
     ],
     imports: [
         CommonModule,
         IonicModule,
         CustomPipesModule,
+        BrMaskerModule,
         ReactiveFormsModule
     ],
     exports: [
         CardInvestimentComponent,
-        CustomInputComponent
+        CustomInputComponent,
+        CustomDatePickerComponent
     ]
 })
 export class CustomComponentsModule { }

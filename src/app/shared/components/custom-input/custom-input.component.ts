@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class CustomInputComponent implements OnInit, OnChanges {
 
     @Input() label: string = '';
+    @Input() type: string = '';
     @Input() initialValue: any = '';
 
     @Output() fieldOutput: EventEmitter<any> = new EventEmitter();
@@ -25,6 +26,16 @@ export class CustomInputComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.field.valueChanges.subscribe(val => this.fieldOutput.emit(val))
+    }
+
+    applyMask() {
+        if (this.type == 'money') {
+            return {
+                money: true
+            }
+        }
+
+        return {};
     }
 
 }
