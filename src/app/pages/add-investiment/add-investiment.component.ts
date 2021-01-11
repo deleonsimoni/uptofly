@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Investiment } from '@models/investiment';
 
 @Component({
     selector: 'app-add-investiment',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddInvestimentComponent implements OnInit {
 
-    private investimentForm: FormGroup;
+    public investimentForm: FormGroup;
 
     constructor(
         private readonly formBuilder: FormBuilder
@@ -46,4 +47,16 @@ export class AddInvestimentComponent implements OnInit {
         });
     }
 
+    public addInvestiment(): void {
+        const investiment: Investiment = this.investimentForm.getRawValue();
+
+        investiment.total1 = this.calculateTotal(Number(investiment.qtd), Number(investiment.quota));
+        investiment.total3 = this.calculateTotal(Number(investiment.qtd), Number(investiment.currentQuota));
+
+        console.log(investiment);
+    }
+
+    private calculateTotal(qtd: number, quota: number) {
+        return qtd * quota;
+    }
 }
