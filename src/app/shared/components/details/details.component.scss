@@ -9,11 +9,12 @@
     }
 
     &__data {
-        font-weight: 600;
+        font-weight: 500;
         color: #000;
         margin: 0px;
         display: flex;
         align-items: center;
-        font-size: 18px;
+        font-size: 20px;
+        text-transform: capitalize;
     }
 }

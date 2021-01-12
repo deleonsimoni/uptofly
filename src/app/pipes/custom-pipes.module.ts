@@ -13,7 +13,8 @@ import { BrMaskDirective, BrMaskerModule } from 'br-mask';
         MoneyPipe
     ],
     providers: [
-        BrMaskDirective
+        BrMaskDirective,
+        MoneyPipe
     ]
 })
 export class CustomPipesModule { }

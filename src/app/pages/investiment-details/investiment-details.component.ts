@@ -31,6 +31,6 @@ export class InvestimentDetailsComponent implements OnInit {
     }
 
     public edit() {
-
+        this.navCtrl.navigateForward('/edit-investiment', { state: this.investiment });
     }
 }
