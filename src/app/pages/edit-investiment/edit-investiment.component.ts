@@ -13,7 +13,6 @@ export class EditInvestimentComponent implements OnInit {
 
     public investimentForm: FormGroup;
     private investimentParams: Investiment;
-    public type: string = 'money';
 
     constructor(
         private readonly formBuilder: FormBuilder,

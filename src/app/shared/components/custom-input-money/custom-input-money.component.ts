@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MoneyPipe } from '@pipes/money/money.pipe';
 
 @Component({
     selector: 'custom-input-money',
@@ -15,11 +16,13 @@ export class CustomInputMoneyComponent implements OnInit, OnChanges {
 
     public field = new FormControl(null);
 
-    constructor() { }
+    constructor(
+        private readonly moneyPipe: MoneyPipe
+    ) { }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.initialValue) {
-            this.field.setValue(changes.initialValue.currentValue);
+            this.field.setValue(this.moneyPipe.transform(changes.initialValue.currentValue));
         }
     }
 
