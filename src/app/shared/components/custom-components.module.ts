@@ -8,24 +8,29 @@ import { CustomInputComponent } from './custom-input/custom-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomDatePickerComponent } from './custom-date-picker/custom-date-picker.component';
 import { BrMaskerModule } from 'br-mask';
+import { FabButtonComponent } from './fab-button/fab-button.component';
+import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
 
 @NgModule({
     declarations: [
         CardInvestimentComponent,
         CustomInputComponent,
-        CustomDatePickerComponent
+        CustomDatePickerComponent,
+        FabButtonComponent
     ],
     imports: [
         CommonModule,
         IonicModule,
         CustomPipesModule,
         BrMaskerModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxMaterialModule
     ],
     exports: [
         CardInvestimentComponent,
         CustomInputComponent,
-        CustomDatePickerComponent
+        CustomDatePickerComponent,
+        FabButtonComponent
     ]
 })
 export class CustomComponentsModule { }
