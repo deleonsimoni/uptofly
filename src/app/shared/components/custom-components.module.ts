@@ -10,13 +10,15 @@ import { CustomDatePickerComponent } from './custom-date-picker/custom-date-pick
 import { BrMaskerModule } from 'br-mask';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
     declarations: [
         CardInvestimentComponent,
         CustomInputComponent,
         CustomDatePickerComponent,
-        FabButtonComponent
+        FabButtonComponent,
+        DetailsComponent
     ],
     imports: [
         CommonModule,
@@ -30,7 +32,8 @@ import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
         CardInvestimentComponent,
         CustomInputComponent,
         CustomDatePickerComponent,
-        FabButtonComponent
+        FabButtonComponent,
+        DetailsComponent
     ]
 })
 export class CustomComponentsModule { }

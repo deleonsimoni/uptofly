@@ -12,7 +12,8 @@
         <ion-grid>
             <ion-row>
                 <ion-col size="6" *ngFor="let investiment of investiments">
-                    <card-investiment [investiment]="investiment"></card-investiment>
+                    <card-investiment [investiment]="investiment" (click)="investimentDetails(investiment)">
+                    </card-investiment>
                 </ion-col>
             </ion-row>
         </ion-grid>
