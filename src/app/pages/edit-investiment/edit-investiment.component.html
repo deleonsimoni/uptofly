@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button (click)="goBack()"></ion-back-button>
         </ion-buttons>
-        <ion-title>Novo investimento</ion-title>
+        <ion-title>Editar investimento</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -12,66 +12,76 @@
         <ion-grid>
             <ion-row>
                 <ion-col size="12">
-                    <h2 class="title">Cadastre seu novo investimento</h2>
+                    <h2 class="title">Edite seu investimento</h2>
                 </ion-col>
             </ion-row>
             <form [formGroup]="investimentForm" (ngSubmit)="addInvestiment()">
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input label="Ticket" (fieldOutput)="fillForm('ticket', $event)">
+                        <custom-input label="Ticket" [initialValue]="investimentParams.ticket"
+                            (fieldOutput)="fillForm('ticket', $event)">
                         </custom-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input label="Operação" (fieldOutput)="fillForm('operation', $event)">
+                        <custom-input label="Operação" [initialValue]="investimentParams.operation"
+                            (fieldOutput)="fillForm('operation', $event)">
                         </custom-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-date-picker label="Data" (fieldOutput)="fillForm('date', $event)"></custom-date-picker>
+                        <custom-date-picker label="Data" [initialValue]="investimentParams.date"
+                            (fieldOutput)="fillForm('date', $event)"></custom-date-picker>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input label="Quantidade" (fieldOutput)="fillForm('qtd', $event)">
+                        <custom-input label="Quantidade" [initialValue]="investimentParams.qtd"
+                            (fieldOutput)="fillForm('qtd', $event)">
                         </custom-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input-money label="Cota" (fieldOutput)="fillForm('quota', $event)">
+                        <custom-input-money label="Cota" [initialValue]="investimentParams.quota"
+                            (fieldOutput)="fillForm('quota', $event)">
                         </custom-input-money>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input-money label="Cota média" (fieldOutput)="fillForm('averageQuota', $event)">
+                        <custom-input-money label="Cota média" [initialValue]="investimentParams.averageQuota"
+                            (fieldOutput)="fillForm('averageQuota', $event)">
                         </custom-input-money>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input label="Segmento" (fieldOutput)="fillForm('segment', $event)">
+                        <custom-input label="Segmento" [initialValue]="investimentParams.segment"
+                            (fieldOutput)="fillForm('segment', $event)">
                         </custom-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input-money label="Cota atual" (fieldOutput)="fillForm('currentQuota', $event)">
+                        <custom-input-money label="Cota atual" [initialValue]="investimentParams.currentQuota"
+                            (fieldOutput)="fillForm('currentQuota', $event)">
                         </custom-input-money>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input-money label="Cota alvo" (fieldOutput)="fillForm('targetQuota', $event)">
+                        <custom-input-money label="Cota alvo" [initialValue]="investimentParams.targetQuota"
+                            (fieldOutput)="fillForm('targetQuota', $event)">
                         </custom-input-money>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col size="12">
-                        <custom-input label="Upside1" (fieldOutput)="fillForm('upside1', $event)">
+                        <custom-input label="Upside1" [initialValue]="investimentParams.upside"
+                            (fieldOutput)="fillForm('upside1', $event)">
                         </custom-input>
                     </ion-col>
                 </ion-row>

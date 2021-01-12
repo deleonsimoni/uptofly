@@ -1,24 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Investiment } from '@models/investiment';
 
 @Component({
-    selector: 'app-add-investiment',
-    templateUrl: './add-investiment.component.html',
-    styleUrls: ['./add-investiment.component.scss'],
+    selector: 'app-edit-investiment',
+    templateUrl: './edit-investiment.component.html',
+    styleUrls: ['./edit-investiment.component.scss'],
 })
-export class AddInvestimentComponent implements OnInit {
+export class EditInvestimentComponent implements OnInit {
 
     public investimentForm: FormGroup;
+    private investimentParams: Investiment;
+    public type: string = 'money';
 
     constructor(
         private readonly formBuilder: FormBuilder,
-        private readonly navCtrl: NavController
-    ) { }
+        private readonly navCtrl: NavController,
+        private readonly router: Router
+    ) {
+        this.investimentParams = this.router.getCurrentNavigation().extras.state as Investiment;
+    }
 
     ngOnInit() {
         this.investimentForm = this.createForm();
+
+        for (const key in this.investimentParams) {
+            if (this.investimentParams.hasOwnProperty(key)) {
+                this.fillForm(key, this.investimentParams[key]);
+            }
+        }
     }
 
     public createForm(): FormGroup {
@@ -47,13 +59,10 @@ export class AddInvestimentComponent implements OnInit {
         });
     }
 
-    public addInvestiment(): void {
+    public editInvestiment(): void {
         const investiment: Investiment = this.investimentForm.getRawValue();
 
-        investiment.total1 = this.calculateTotal(Number(investiment.qtd), Number(investiment.quota));
-        investiment.total3 = this.calculateTotal(Number(investiment.qtd), Number(investiment.currentQuota));
 
-        console.log(investiment);
     }
 
     private calculateTotal(qtd: number, quota: number) {

@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'custom-input',
-    templateUrl: './custom-input.component.html',
-    styleUrls: ['./custom-input.component.scss'],
+    selector: 'custom-input-money',
+    templateUrl: './custom-input-money.component.html',
+    styleUrls: ['./custom-input-money.component.scss'],
 })
-export class CustomInputComponent implements OnInit, OnChanges {
+export class CustomInputMoneyComponent implements OnInit, OnChanges {
 
     @Input() label: string = '';
     @Input() initialValue: any = '';
