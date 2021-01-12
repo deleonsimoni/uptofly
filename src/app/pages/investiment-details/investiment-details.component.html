@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button (click)="goBack()"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Detalhes do investimento</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div id="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="10">
+                    <app-details label="Segmento" [data]="investiment.segment"></app-details>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-button color="primary" type="button" expand="block" (click)="edit()">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Operação" [data]="investiment.operation"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Ticket" [data]="investiment.ticket"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Data" [data]="getDate(investiment.date)"></app-details>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Quantidade" [data]="investiment.qtd"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Cota" data="{{ investiment.quota | money }}"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Total 1" data="{{ investiment.total1 | money }}"></app-details>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Cota média" data="{{ investiment.averageQuota | money }}"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Total 2" data="{{ investiment.total2 }}"></app-details>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Cota atual" data="{{ investiment.currentQuota | money }}"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Cota alvo" data="{{ investiment.targetQuota | money }}"></app-details>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Upside 1" data="{{ investiment.upside1 + '%'}}"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Upside 2" data="{{ investiment.upside2 + '%'}}"></app-details>
+                </ion-col>
+                <ion-col size="4">
+                    <app-details label="Total 3" data="{{ investiment.total3 | money }}"></app-details>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4">
+                    <app-details label="Saldo" data="{{ investiment.balance | money }}"></app-details>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>
+
+<!-- {
+"qtd": "500",
+"quota": 10.47,
+"total1": 5.235,
+"averageQuota": 0,
+"total2": 0,
+"segment": "mediciana diagnóstico",
+"currentQuota": 11.29,
+"targetQuota": 17,
+"upside1": 60,
+"upside2": 7.83,
+"total3": 5645,
+"balance": 410
+} -->

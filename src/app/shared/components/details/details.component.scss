@@ -1,0 +1,19 @@
+.content {
+    margin: 8px 0px;
+
+    &__label {
+        font-weight: 600;
+        color: #000000ad;
+        letter-spacing: 1px;
+        font-style: italic;
+    }
+
+    &__data {
+        font-weight: 600;
+        color: #000;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+    }
+}

@@ -16,7 +16,7 @@ export class MyInvestimentsComponent implements OnInit {
             date: "2020-06-26T00:00:00-03:00",
             qtd: "500",
             quota: 10.47,
-            total1: 5.235,
+            total1: 5235.00,
             averageQuota: 0,
             total2: 0,
             segment: "mediciana diagnóstico",
@@ -33,7 +33,7 @@ export class MyInvestimentsComponent implements OnInit {
             date: "2020-06-26T00:00:00-03:00",
             qtd: "500",
             quota: 10.47,
-            total1: 5.235,
+            total1: 5235.00,
             averageQuota: 0,
             total2: 0,
             segment: "mediciana diagnóstico",
@@ -54,5 +54,9 @@ export class MyInvestimentsComponent implements OnInit {
 
     public navigate(event) {
         this.navCtrl.navigateForward(`/${event}`);
+    }
+
+    public investimentDetails(investiment) {
+        this.navCtrl.navigateForward('/investiment-details', { state: investiment });
     }
 }
