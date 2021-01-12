@@ -1,32 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
-import { MyInvestimentsComponent } from './my-investiments.component';
+import { AddInvestimentComponent } from './add-investiment.component';
 import { CustomComponentsModule } from '@shared/components/custom-components.module';
-import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     {
         path: '',
-        component: MyInvestimentsComponent
+        component: AddInvestimentComponent
     }
 ]
 
 @NgModule({
     declarations: [
-        MyInvestimentsComponent
+        AddInvestimentComponent
     ],
     imports: [
         CommonModule,
         CustomComponentsModule,
-        NgxMaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(routes)
     ],
     exports: [
-        MyInvestimentsComponent,
-        RouterModule
+        RouterModule,
+        AddInvestimentComponent
     ]
 })
-export class MyInvestimentsModule { }
+export class AddInvestimentModule { }

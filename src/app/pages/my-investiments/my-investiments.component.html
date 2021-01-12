@@ -12,9 +12,10 @@
         <ion-grid>
             <ion-row>
                 <ion-col size="6" *ngFor="let investiment of investiments">
-                    <app-card-investiment [investiment]="investiment"></app-card-investiment>
+                    <card-investiment [investiment]="investiment"></card-investiment>
                 </ion-col>
             </ion-row>
         </ion-grid>
+        <fab-button (navigateTo)="navigate($event)" boundary="#container"></fab-button>
     </div>
 </ion-content>

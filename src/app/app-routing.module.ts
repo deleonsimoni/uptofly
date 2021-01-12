@@ -10,6 +10,10 @@ const routes: Routes = [
     {
         path: 'my-investiments',
         loadChildren: () => import('@pages/my-investiments/my-investiments.module').then(m => m.MyInvestimentsModule)
+    },
+    {
+        path: 'add-investiment',
+        loadChildren: () => import('@pages/add-investiment/add-investiment.module').then(m => m.AddInvestimentModule)
     }
 ];
 

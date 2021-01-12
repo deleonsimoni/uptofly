@@ -4,18 +4,33 @@ import { IonicModule } from '@ionic/angular';
 
 import { CardInvestimentComponent } from './card-investiment/card-investiment.component';
 import { CustomPipesModule } from '@pipes/custom-pipes.module';
+import { CustomInputComponent } from './custom-input/custom-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomDatePickerComponent } from './custom-date-picker/custom-date-picker.component';
+import { BrMaskerModule } from 'br-mask';
+import { FabButtonComponent } from './fab-button/fab-button.component';
+import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
 
 @NgModule({
     declarations: [
-        CardInvestimentComponent
+        CardInvestimentComponent,
+        CustomInputComponent,
+        CustomDatePickerComponent,
+        FabButtonComponent
     ],
     imports: [
         CommonModule,
         IonicModule,
-        CustomPipesModule
+        CustomPipesModule,
+        BrMaskerModule,
+        ReactiveFormsModule,
+        NgxMaterialModule
     ],
     exports: [
-        CardInvestimentComponent
+        CardInvestimentComponent,
+        CustomInputComponent,
+        CustomDatePickerComponent,
+        FabButtonComponent
     ]
 })
 export class CustomComponentsModule { }
