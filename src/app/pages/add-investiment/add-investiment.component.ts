@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { Investiment } from '@models/investiment';
 
 @Component({
@@ -12,7 +13,8 @@ export class AddInvestimentComponent implements OnInit {
     public investimentForm: FormGroup;
 
     constructor(
-        private readonly formBuilder: FormBuilder
+        private readonly formBuilder: FormBuilder,
+        private readonly navCtrl: NavController
     ) { }
 
     ngOnInit() {
@@ -58,5 +60,9 @@ export class AddInvestimentComponent implements OnInit {
 
     private calculateTotal(qtd: number, quota: number) {
         return qtd * quota;
+    }
+
+    public goBack(): void {
+        this.navCtrl.pop();
     }
 }
