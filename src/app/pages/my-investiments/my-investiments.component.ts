@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Investiment } from '@models/investiment';
 
 @Component({
@@ -45,8 +46,13 @@ export class MyInvestimentsComponent implements OnInit {
         }
     ]
 
-    constructor() { }
+    constructor(
+        private navCtrl: NavController
+    ) { }
 
     ngOnInit() { }
 
+    public navigate(event) {
+        this.navCtrl.navigateForward(`/${event}`);
+    }
 }
