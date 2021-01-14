@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController, NavController } from '@ionic/angular';
 import { Investiment } from '@models/investiment';
+import { StorageAdapter } from './../../adapters/storage.service';
 
 @Component({
     selector: 'app-add-investiment',
@@ -14,7 +15,9 @@ export class AddInvestimentComponent implements OnInit {
 
     constructor(
         private readonly formBuilder: FormBuilder,
-        private readonly navCtrl: NavController
+        private readonly navCtrl: NavController,
+        private readonly storageAdapter: StorageAdapter,
+        private alertCtrl: AlertController
     ) { }
 
     ngOnInit() {
@@ -23,18 +26,18 @@ export class AddInvestimentComponent implements OnInit {
 
     public createForm(): FormGroup {
         return this.formBuilder.group({
-            operation: [null],
-            ticket: [null],
-            date: [null],
-            qtd: [null],
-            quota: [null],
+            operation: [null, Validators.required],
+            ticket: [null, Validators.required],
+            date: [null, Validators.required],
+            qtd: [null, Validators.required],
+            quota: [null, Validators.required],
             total1: [null],
             averageQuota: [null],
             total2: [null],
             segment: [null],
-            currentQuota: [null],
-            targetQuota: [null],
-            upside1: [null],
+            currentQuota: [null, Validators.required],
+            targetQuota: [null, Validators.required],
+            upside1: [null, Validators.required],
             upside2: [null],
             total3: [null],
             balance: [null]
@@ -50,10 +53,28 @@ export class AddInvestimentComponent implements OnInit {
     public addInvestiment(): void {
         const investiment: Investiment = this.investimentForm.getRawValue();
 
-        investiment.total1 = this.calculateTotal(Number(investiment.qtd), Number(investiment.quota));
-        investiment.total3 = this.calculateTotal(Number(investiment.qtd), Number(investiment.currentQuota));
+        if (this.investimentForm.invalid) {
+            this.showAlert('Atenção', 'Preencha os obrigatórios!');
+            return;
+        }
 
-        console.log(investiment);
+        investiment.total1 = this.calculateTotal(Number(investiment.qtd), this.formatNumber(investiment.quota));
+        investiment.total3 = this.calculateTotal(Number(investiment.qtd), this.formatNumber(investiment.currentQuota));
+        investiment.upside2 = this.calculateUpside2(investiment.total3, investiment.total1);
+        investiment.balance = investiment.total3 - investiment.total1;
+
+        this.storageAdapter.create(investiment)
+            .subscribe(_ => {
+                this.showAlert('', 'Seu investiment foi salvo com sucesso!', true)
+            });
+    }
+
+    private formatNumber(param: any): any {
+        return Number(param.replace(/[.]/g, '').replace(/[,]/g, '.')).toFixed(2);
+    }
+
+    private calculateUpside2(total3, total1) {
+        return Math.round((((total3 / total1) - 1) * 100) * 100) / 100;
     }
 
     private calculateTotal(qtd: number, quota: number) {
@@ -62,5 +83,24 @@ export class AddInvestimentComponent implements OnInit {
 
     public goBack(): void {
         this.navCtrl.pop();
+    }
+
+    private async showAlert(title: string, message: string, success: boolean = false) {
+        const alert = await this.alertCtrl.create({
+            header: title,
+            message: message,
+            buttons: [
+                {
+                    text: 'Ok',
+                    handler: () => {
+                        if (success) {
+                            this.navCtrl.pop();
+                        }
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
     }
 }

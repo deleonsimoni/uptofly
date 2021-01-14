@@ -12,15 +12,21 @@ import * as moment from 'moment';
 export class InvestimentDetailsComponent implements OnInit {
 
     public investiment: Investiment;
+    private documentKeys = {};
 
     constructor(
         private readonly navCtrl: NavController,
         private readonly router: Router
     ) {
-        this.investiment = this.router.getCurrentNavigation().extras.state as Investiment;
+        const investiment = this.router.getCurrentNavigation().extras.state;
+        console.log(investiment);
+        this.investiment = investiment.doc as Investiment;
+        this.documentKeys['rev'] = investiment.value.rev;
+        this.documentKeys['id'] = investiment.id;
     }
 
     ngOnInit() { }
+
 
     public goBack(): void {
         this.navCtrl.pop();
@@ -31,6 +37,6 @@ export class InvestimentDetailsComponent implements OnInit {
     }
 
     public edit() {
-        this.navCtrl.navigateForward('/edit-investiment', { state: this.investiment });
+        this.navCtrl.navigateForward('/edit-investiment', { state: { investiment: this.investiment, keys: this.documentKeys } });
     }
 }

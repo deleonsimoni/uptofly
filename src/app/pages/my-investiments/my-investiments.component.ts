@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Investiment } from '@models/investiment';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { StorageAdapter } from 'src/app/adapters/storage.service';
 
 @Component({
     selector: 'app-my-investiments',
     templateUrl: './my-investiments.component.html',
     styleUrls: ['./my-investiments.component.scss'],
 })
-export class MyInvestimentsComponent implements OnInit {
+export class MyInvestimentsComponent {
 
     public investiments: Investiment[] = [
         {
@@ -46,11 +49,18 @@ export class MyInvestimentsComponent implements OnInit {
         }
     ]
 
+    public investiments$: Observable<Investiment[]>;
+
     constructor(
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private storage: StorageAdapter
     ) { }
 
-    ngOnInit() { }
+    ionViewWillEnter() {
+        // this.storage.retrieve().subscribe();
+        this.investiments$ = this.storage.retrieve()
+            .pipe(take(1));
+    }
 
     public navigate(event) {
         this.navCtrl.navigateForward(`/${event}`);
