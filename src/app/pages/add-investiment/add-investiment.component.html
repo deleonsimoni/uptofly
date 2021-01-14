@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button (click)="goBack()"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Novo investimento</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div id="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <h2 class="title">Cadastre seu novo investimento</h2>
+                </ion-col>
+            </ion-row>
+            <form [formGroup]="investimentForm" (ngSubmit)="addInvestiment()">
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input label="Ticket" (fieldOutput)="fillForm('ticket', $event)">
+                        </custom-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input label="Operação" (fieldOutput)="fillForm('operation', $event)">
+                        </custom-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-date-picker label="Data" (fieldOutput)="fillForm('date', $event)"></custom-date-picker>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input label="Quantidade" (fieldOutput)="fillForm('qtd', $event)">
+                        </custom-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input-money label="Cota" (fieldOutput)="fillForm('quota', $event)">
+                        </custom-input-money>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input-money label="Cota média" (fieldOutput)="fillForm('averageQuota', $event)">
+                        </custom-input-money>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input label="Segmento" (fieldOutput)="fillForm('segment', $event)">
+                        </custom-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input-money label="Cota atual" (fieldOutput)="fillForm('currentQuota', $event)">
+                        </custom-input-money>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input-money label="Cota alvo" (fieldOutput)="fillForm('targetQuota', $event)">
+                        </custom-input-money>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <custom-input label="Upside1" (fieldOutput)="fillForm('upside1', $event)">
+                        </custom-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-button color="primary" class="btn" expand="block" type="submit">Cadastrar</ion-button>
+                    </ion-col>
+                </ion-row>
+            </form>
+        </ion-grid>
+    </div>
+</ion-content>
