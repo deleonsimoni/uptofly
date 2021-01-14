@@ -21,7 +21,8 @@ export class CustomInputMoneyComponent implements OnInit, OnChanges {
     ) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.initialValue) {
+        console.log(changes.initialValue?.currentValue);
+        if (changes.initialValue?.currentValue) {
             this.field.setValue(this.moneyPipe.transform(changes.initialValue.currentValue));
         }
     }

@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CouchbaseLite } from '@ionic-native/couchbase-lite/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     providers: [
         StatusBar,
         SplashScreen,
+        CouchbaseLite,
+        HTTP,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     ],
     bootstrap: [AppComponent]

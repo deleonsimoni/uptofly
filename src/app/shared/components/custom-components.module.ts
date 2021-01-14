@@ -11,7 +11,6 @@ import { BrMaskerModule } from 'br-mask';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { NgxMaterialModule } from 'src/app/utils/ngx-material.module';
 import { DetailsComponent } from './details/details.component';
-import { DirectivesModule } from 'src/app/directives/directives.module';
 import { CustomInputMoneyComponent } from './custom-input-money/custom-input-money.component';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { CustomInputMoneyComponent } from './custom-input-money/custom-input-mon
         CommonModule,
         IonicModule,
         CustomPipesModule,
-        DirectivesModule,
         BrMaskerModule,
         ReactiveFormsModule,
         NgxMaterialModule

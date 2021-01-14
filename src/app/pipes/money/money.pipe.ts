@@ -10,7 +10,7 @@ export class MoneyPipe implements PipeTransform {
         private readonly brMask: BrMaskDirective
     ) { }
 
-    transform(value: number, ...args: string[]): string {
+    transform(value: any, ...args: string[]): string {
         const config: BrMaskModel = new BrMaskModel();
 
         config.money = true;
@@ -18,7 +18,15 @@ export class MoneyPipe implements PipeTransform {
         config.decimalCaracter = ',';
         config.decimal = 2;
 
-        return this.brMask.writeValueMoney(value.toFixed(2), config);
+        return this.brMask.writeValueMoney(this.formatNumber(value), config);
+    }
+
+    private formatNumber(param: any): any {
+        if (typeof (param) == 'string') {
+            return Number(param.replace(/[.]/g, '').replace(/[,]/g, '.')).toFixed(2);
+        }
+
+        return param.toFixed(2);
     }
 
 }

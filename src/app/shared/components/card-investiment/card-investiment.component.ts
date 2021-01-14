@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Investiment } from '@models/investiment';
 
 @Component({
@@ -6,13 +6,17 @@ import { Investiment } from '@models/investiment';
     templateUrl: './card-investiment.component.html',
     styleUrls: ['./card-investiment.component.scss'],
 })
-export class CardInvestimentComponent implements OnInit {
+export class CardInvestimentComponent implements OnInit, OnChanges {
 
     @Input() investiment: Investiment = null;
 
     constructor() { }
 
     ngOnInit() { }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
+    }
 
     public getColor(): string {
         if (this.investiment.upside2 > 0) {

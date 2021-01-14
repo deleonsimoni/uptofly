@@ -11,8 +11,8 @@
     <div id="container">
         <ion-grid>
             <ion-row>
-                <ion-col size="6" *ngFor="let investiment of investiments">
-                    <card-investiment [investiment]="investiment" (click)="investimentDetails(investiment)">
+                <ion-col size="6" *ngFor="let investiment of (investiments$ | async)">
+                    <card-investiment [investiment]="investiment.doc" (click)="investimentDetails(investiment)">
                     </card-investiment>
                 </ion-col>
             </ion-row>
